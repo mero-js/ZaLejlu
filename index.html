@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jedno pitanje za tebe ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 22px;
+    font-family: 'DM Sans', sans-serif;
+    color: #60364c;
+    background:
+        radial-gradient(circle at 15% 15%, #ffe0ed, transparent 34%),
+        radial-gradient(circle at 85% 80%, #e9ddff, transparent 36%),
+        linear-gradient(135deg, #fff5f8, #f8f0ff);
+}
+
+.card {
+    position: relative;
+    width: min(100%, 520px);
+    padding: 46px 30px 40px;
+    text-align: center;
+    background: rgba(255,255,255,.82);
+    border: 1px solid white;
+    border-radius: 30px;
+    box-shadow: 0 22px 70px rgba(153,75,117,.16);
+    z-index: 2;
+}
+
+.heart-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 20px;
+    border-radius: 25px;
+    display: grid;
+    place-items: center;
+    font-size: 36px;
+    background: linear-gradient(135deg,#ffe0eb,#f4e4ff);
+    animation: beat 1.6s infinite;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem,7vw,2.8rem);
+    line-height: 1.15;
+    margin: 0 0 14px;
+    color: #8c3e68;
+}
+
+.subtitle {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: #886579;
+    margin: 0 auto 25px;
+}
+
+.question {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.55rem;
+    color: #713654;
+    margin: 24px 0 26px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    min-height: 58px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: 0;
+    border-radius: 999px;
+    padding: 15px 29px;
+    font: 700 1rem 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+#yes {
+    color: white;
+    background: linear-gradient(135deg,#ff78a5,#e64d8a);
+    box-shadow: 0 9px 22px #ec6b9b55;
+}
+
+#yes:hover {
+    transform: translateY(-3px) scale(1.04);
+}
+
+#no {
+    color: #956b83;
+    background: #f8edf3;
+    border: 1px solid #f0dce7;
+    position: relative;
+}
+
+.note {
+    font-size: .83rem;
+    color: #b18a9e;
+    margin-top: 25px;
+}
+
+#success {
+    display: none;
+}
+
+#success h2 {
+    font: 700 2.3rem 'Playfair Display', serif;
+    color: #d34f86;
+    margin: 0 0 12px;
+}
+
+#success p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #886579;
+}
+
+.date {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 18px;
+    border-radius: 15px;
+    background: #fff0f6;
+    color: #a13e70;
+    font-weight: 700;
+}
+
+.float {
+    position: fixed;
+    bottom: -50px;
+    z-index: 1;
+    opacity: .6;
+    animation: rise linear forwards;
+    pointer-events: none;
+}
+
+@keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+@media(max-width:420px) {
+    .card {
+        padding: 38px 20px 32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="card">
+
+    <div id="asking">
+
+        <div class="heart-icon">💗</div>
+
+        <h1>Hej, ti!<br>Imam nešto za tebe...</h1>
+
+        <p class="subtitle">
+            Ljubavi, ovo je samo za tebe.
+            Nadam se da će ti izmamiti osmijeh. 🥰
+        </p>
+
+        <div class="question">
+            Hoćeš li izaći sa mnom? 🌷
+        </div>
+
+        <div class="buttons">
+            <button id="yes">DA, naravno! ❤️</button>
+            <button id="no">Ne 🙈</button>
+        </div>
+
+        <div class="note">
+            P.S. Postoji samo jedan odgovor koji priželjkujem. 🤭
+        </div>
+
+    </div>
+
+    <div id="success">
+
+        <div class="heart-icon">🥹</div>
+
+        <h2>Jeeeej! ❤️</h2>
+
+        <p>
+            Upravo si mi uljepšala dan.<br>
+            Jedva čekam da te vidim ljubavi, fajis mi punjo punjo punjo. 💕
+        </p>
+
+        <div class="date">
+            Onda je dogovoreno! 🌹
+        </div>
+
+        <p class="note">
+            ✨
+        </p>
+
+    </div>
+
+</main>
+
+<script>
+
+const no = document.getElementById('no');
+const yes = document.getElementById('yes');
+
+const asking = document.getElementById('asking');
+const success = document.getElementById('success');
+
+//da bjezi
+function moveNo() {
+    const x = (Math.random() - 0.5) * 600;
+    const y = (Math.random() - 0.5) * 400;
+
+    no.style.transform = `translate(${x}px,${y}px)`;
+}
+
+no.addEventListener('pointerenter', moveNo);
+no.addEventListener('click', moveNo);
+
+// Kada klikne DA
+yes.addEventListener('click', () => {
+
+    asking.style.display = 'none';
+    success.style.display = 'block';
+
+    for (let i = 0; i < 35; i++) {
+        setTimeout(createHeart, i * 55);
+    }
+
+});
+
+// Animacija srca
+function createHeart() {
+
+    const el = document.createElement('span');
+
+    el.className = 'float';
+
+    el.textContent = ['💗','💕','💖','✨','🌸']
+        [Math.floor(Math.random() * 5)];
+
+    el.style.left = Math.random() * 100 + 'vw';
+
+    el.style.fontSize =
+        (18 + Math.random() * 23) + 'px';
+
+    el.style.animationDuration =
+        (3 + Math.random() * 3) + 's';
+
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 6500);
+}
+
+// Povremeno stvaranje srca
+setInterval(() => {
+    if (Math.random() > 0.35) {
+        createHeart();
+    }
+}, 1100);
+
+</script>
+
+</body>
+</html>
